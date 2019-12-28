@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather Dashboard</title>
+    <title>Main Page</title>
      <!-- css link  -->
      <link rel="stylesheet" href="style.css" />
      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
@@ -15,13 +15,81 @@
      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
      crossorigin="anonymous">
      </script> 
+     <!-- BootStrap Link -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+    <!-- Header for all pages -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.html">Weather Application</a>
+        
+
+        <div class=" navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline offset-lg-9 my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="text-center text-primary">Welcome to your personal weather app!</h1>
+            <h3 class="text-center">Just simply search up any city and get all of it's weather information.</h3>
+        </div>
+   
+    <!-- Default cities -->
+        <div class="row">
+            <!-- New York -->
+            <div class="card border-white col-lg-3" >
+                <img src="https://image.shutterstock.com/image-photo/statue-liberty-one-world-trade-260nw-758701297.jpg" 
+                    class=" city-images card-img-top" alt="The city of New York">
+                <div class="card-body">
+                    <h5 class="card-title">New York</h5>
+                    <p class="card-text">Click below to see the weather in New York!</p>
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+            <!-- Los Angeles -->
+            <div class="card border-white col-lg-3">
+                <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1528831911%2Flos-angeles-skyline-pink-sky-LAHOTELS0618.jpg%3Fitok%3DPyFjFMUh&w=400&c=sc&poi=face&q=85" 
+                    class="card-img-top city-images" alt="The city of Los Angeles">
+                <div class="card-body">
+                    <h5 class="card-title">Los Angeles</h5>
+                    <p class="card-text">Click below to see the weather in Los Angeles!</p>
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+            <!-- Chicago -->
+            <div class="card border-white col-lg-3">
+                <img src="https://www.zenogroup.com/sites/g/files/aatuss426/files/styles/full_hero/public/2019-06/Zeno%20Chicago%20%202.jpg?h=a141e9ea&itok=oI9Jz7fh" 
+                    class="city-images card-img-top" alt="The city of Chicago">
+                <div class="card-body">
+                    <h5 class="card-title">Chicago</h5>
+                    <p class="card-text">Click below to see the weather in Chicago!</p>
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+            <!-- Phoenix -->
+            <div class="card border-white col-lg-3">
+                <img src="https://cdn.pastemagazine.com/www/articles/phoenix%20main.jpg" 
+                    class="city-images card-img-top" alt="The city of Phoenix">
+                <div class="card-body">
+                    <h5 class="card-title">Phoenix</h5>
+                    <p class="card-text">Click below to see the weather in Phoenix!</p>
+                    <a href="#" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+     </div>
+
+    <!-- footer for all pages -->
+    <footer class="page-footer fixed-bottom"> 
+        <div class="bg-primary py-4"> </div>
+    </footer>
+
+    <!-- javascript link -->
+    <script type="text/javascript" src="script.js"></script> 
     
-
-
-     <!-- javascript link -->
-     <script type="text/javascript" src="script.js"></script>  
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 </html>
