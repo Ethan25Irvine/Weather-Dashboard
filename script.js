@@ -1,15 +1,17 @@
 $(document).ready(function(){
     basicWeatherData();
-    // uvIndex();
+    
 });
 // saves the search into our console
   $('#search').click(function(){
     const citySearched = $(this).siblings('input').val().toUpperCase();
     localStorage.setItem('city', citySearched); 
+    basicWeatherData();
   });
 
 //   displays our basic information
 function basicWeatherData(){
+  $('.weatherDisplay').empty();
     const city = localStorage.getItem('city');
     const queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=9be0a529a7dd200677c71e4ba94edd63&units=imperial";
     
@@ -70,4 +72,7 @@ function basicWeatherData(){
     });
   }
 
-
+$('.city-btn').click(function(){
+    localStorage.setItem('city', $(this).siblings('h5').text());
+    basicWeatherData();
+});
