@@ -21,24 +21,23 @@
 <body>
     <!-- Header for all pages -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.html">Weather Application</a>
+        <a class="navbar-brand">Weather Application</a>
         
 
         <div class=" navbar-collapse" id="navbarSupportedContent">
             <form class="form-inline offset-lg-9 my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Cities" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" id="search"  type="submit">Search</button>
             </form>
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="jumbotron">
-            <h1 class="text-center text-primary">Welcome to your personal weather app!</h1>
-            <h3 class="text-center">Just simply search up any city and get all of it's weather information.</h3>
+    <div class="mainArea container mt-5">
+        <div class="jumbotron weatherDisplay">
+            <!-- City searched information will display here -->
         </div>
    
-    <!-- Default cities -->
+        <!-- Default cities -->
         <div class="row">
             <!-- New York -->
             <div class="card border-white col-lg-3" >
@@ -81,7 +80,9 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
+
+    
 
     <!-- footer for all pages -->
     <footer class="page-footer fixed-bottom"> 
