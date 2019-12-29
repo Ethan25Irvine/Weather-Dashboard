@@ -1,13 +1,11 @@
 $(document).ready(function(){
     basicWeatherData();
-   
+    // uvIndex();
 });
 // saves the search into our console
   $('#search').click(function(){
     const citySearched = $(this).siblings('input').val().toUpperCase();
-        localStorage.setItem('city', citySearched); 
-        $('.mainArea').hide();
-        $('.weatherDisplay').show();
+    localStorage.setItem('city', citySearched); 
   });
 
 //   displays our basic information
@@ -18,18 +16,58 @@ function basicWeatherData(){
     $.ajax({
       url: queryURL,
       method: "GET",
-    }).then(function(response) {
+      // contentType: "application/json",
+      // dataType: "json"
+    })
+    .done(function(response){
+        const cityLat = response.coord.lat;
+        const cityLon = response.coord.lon;
+        
         const weatherTemp = response.main.temp;
         const weatherHumidity = response.main.humidity;
         const windSpeed = response.wind.speed;
-        
-        $('.weatherDisplay').append("<h1>"+ city +"</h1>");
-        $('.weatherDisplay').append("<p>"+ weatherTemp +" Degrees </p>");
-        $('.weatherDisplay').append("<p>"+ weatherHumidity +"% Humid </p>");
-        $('.weatherDisplay').append("<p>"+ windSpeed +" MPH </p>");
+        const currentIcon = response.weather[0].icon;
+        const iconURL = "https://openweathermap.org/img/wn/"+currentIcon+"@2x.png"
+        const currentDay = moment().format('l');
+
+        $('.weatherDisplay').append("<h1>"+ city +" "+ currentDay+"</h1>");
+        $('.weatherDisplay').append("<img src="+iconURL+">");
+        $('.weatherDisplay').append("<p>Temperature: "+ weatherTemp +" <span> &#8457;</span></p>");
+        $('.weatherDisplay').append("<p>Humidity: "+ weatherHumidity +"%</p>");
+        $('.weatherDisplay').append("<p>Wind Speed: "+ windSpeed +" MPH </p>");
       // Printing the entire object to console
       console.log(response);
+      const uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=9ba98b6f40ce7ad914af524232a14cbd&lat="+cityLat+"&lon="+cityLon+"";
+    
+      $.ajax({
+        url: uvURL,
+        method: "GET",
+      }).then(function(uvResponse) {
+        const uvIndex = uvResponse.value; 
+        
+        
+        
+        // change the color 
+        if (uvIndex <=2){
+          bgClass = 'low'
+        } else if (uvIndex <=5){
+          bgClass = 'moderate'
+        } else if (uvIndex <=7){
+          bgClass = 'high'
+        } else if (uvIndex <=10){
+          bgClass = 'veryHigh'
+        } else if(uvIndex >=11){
+          bgClass = 'extreme'
+        } 
+
+        $('.weatherDisplay').append("<p>UV Index: <span class="+bgClass+">"+ uvIndex +"</span></p>");
+        // Printing the entire object to console
+        console.log(uvResponse);
+      });
+    })
+    .fail(function(){
+      $('.weatherDisplay').append("<h1 class='text-center'>CITY NOT FOUND</h1>");
     });
   }
 
-//   $('.card').append("<p>"+  +" </p>");
+

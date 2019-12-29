@@ -1,3 +1,27 @@
 .city-images {
     height: 150px;
 }
+
+.low {
+    background-color: forestgreen;
+    color: white;
+}
+
+.moderate {
+    background-color: gold;
+}
+
+.high {
+    background-color: orangered;
+    color: white;
+}
+
+.veryHigh {
+    background-color: red;
+    color: white;
+}
+
+.extreme {
+    background-color: slateblue ;
+    color: white;
+}
