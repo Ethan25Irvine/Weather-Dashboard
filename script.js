@@ -64,7 +64,7 @@ function basicWeatherData(){
         console.log(uvResponse);
       });
 
-      const dayURL ='http://api.openweathermap.org/data/2.5/forecast?appid=9ba98b6f40ce7ad914af524232a14cbd&q='+city+'&units=imperial&cnt=6';
+      const dayURL ='https://api.openweathermap.org/data/2.5/forecast?appid=9ba98b6f40ce7ad914af524232a14cbd&q='+city+'&units=imperial&cnt=6';
       $.ajax({
         url: dayURL,
         method: "GET",
