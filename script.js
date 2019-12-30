@@ -18,13 +18,10 @@ function basicWeatherData(){
     $.ajax({
       url: queryURL,
       method: "GET",
-      // contentType: "application/json",
-      // dataType: "json"
     })
     .done(function(response){
         const cityLat = response.coord.lat;
         const cityLon = response.coord.lon;
-        
         const weatherTemp = response.main.temp;
         const weatherHumidity = response.main.humidity;
         const windSpeed = response.wind.speed;
@@ -49,7 +46,7 @@ function basicWeatherData(){
         
         
         
-        // change the color 
+        // change the back ground color for the uv index
         if (uvIndex <=2){
           bgClass = 'low'
         } else if (uvIndex <=5){
@@ -66,13 +63,35 @@ function basicWeatherData(){
         // Printing the entire object to console
         console.log(uvResponse);
       });
+
+      const dayURL ='http://api.openweathermap.org/data/2.5/forecast?appid=9ba98b6f40ce7ad914af524232a14cbd&q='+city+'&units=imperial&cnt=6';
+      $.ajax({
+        url: dayURL,
+        method: "GET",
+      }).then(function(dayResponse) {
+        $('.fiveDay').empty();
+        const dayData = dayResponse.list;
+        
+        for (let i=1; i < dayData.length; i++){
+          const futureIcon = dayResponse.list[i].weather[0].icon
+          const futureIconURL ="https://openweathermap.org/img/wn/"+futureIcon+"@2x.png"
+          $('.fiveDay').append("<div class= 'card bg-primary card-body future-city col-lg-2 mr-3'><h5 class='text-white card-title'>"+moment().add(i, 'day').calendar() +"</h5><img src="+futureIconURL+"><p class='text-white'>"+dayResponse.list[i].main.temp+" <span>&#8457;</span></p><p class='text-white'>"+dayResponse.list[i].main.humidity+"% Humid</p></div>");
+        }
+        
+        
+        console.log(dayResponse);
+      });
     })
     .fail(function(){
       $('.weatherDisplay').append("<h1 class='text-center'>CITY NOT FOUND</h1>");
     });
+
+    
   }
 
 $('.city-btn').click(function(){
     localStorage.setItem('city', $(this).siblings('h5').text());
-    basicWeatherData();
+   
+    basicWeatherData(); 
+   
 });
