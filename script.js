@@ -75,7 +75,7 @@ function basicWeatherData(){
         for (let i=1; i < dayData.length; i++){
           const futureIcon = dayResponse.list[i].weather[0].icon
           const futureIconURL ="https://openweathermap.org/img/wn/"+futureIcon+"@2x.png"
-          $('.fiveDay').append("<div class= 'card bg-primary card-body future-city col-lg-2 mr-3'><h5 class='text-white card-title'>"+moment().add(i, 'day').calendar() +"</h5><img src="+futureIconURL+"><p class='text-white'>"+dayResponse.list[i].main.temp+" <span>&#8457;</span></p><p class='text-white'>"+dayResponse.list[i].main.humidity+"% Humid</p></div>");
+          $('.fiveDay').append("<div class= 'card bg-primary card-body future-city col-lg-2 mr-3 mb-1'>  <h5 class='text-white card-title'>"+moment().add(i, 'day').calendar() +"</h5>  <img class='futureIcon' src="+futureIconURL+">  <p class='text-white'>"+dayResponse.list[i].main.temp+" <span>&#8457;</span></p>  <p class='text-white'>"+dayResponse.list[i].main.humidity+"% Humid</p>  </div>");
         }
         
         
@@ -90,8 +90,7 @@ function basicWeatherData(){
   }
 
 $('.city-btn').click(function(){
-    localStorage.setItem('city', $(this).siblings('h5').text());
-   
+    localStorage.setItem('city', $(this).siblings('h5').text());s 
     basicWeatherData(); 
    
 });
